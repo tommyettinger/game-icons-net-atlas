@@ -24,7 +24,7 @@ public class Main extends ApplicationAdapter {
                 \t<meta id="gameViewport" name="viewport" content="width=device-width initial-scale=1">
                 \t<link href="styles.css" rel="stylesheet" type="text/css">
                 </head>
-                                    
+                
                 """);
         sb.append("<body>\n");
         sb.append("<h1>Game-Icons.Net Preview</h1>\n");
