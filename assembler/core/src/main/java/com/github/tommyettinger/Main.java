@@ -11,6 +11,10 @@ package com.github.tommyettinger;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 
+/**
+ * On Windows, to resize the many 512x512 PNG files to 60x60:
+ * {@code FOR /R %i IN (*.png) DO magick mogrify -resize 60x60 %i}
+ */
 public class Main extends ApplicationAdapter {
     @Override
     public void create() {

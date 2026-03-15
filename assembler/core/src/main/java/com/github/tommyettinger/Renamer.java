@@ -13,11 +13,13 @@ public class Renamer {
         HashSet<String> distinct = new HashSet<>(lines.size());
         ArrayList<String> duplicates = new ArrayList<>(64);
         for (String line: lines) {
-            if(!distinct.add(line))
-                duplicates.add(line);
+            if(!distinct.add(line)) {
+                if(!distinct.add(line.replace(".png", "-alt.png")))
+                    System.out.println("Collision on " + line);
+            }
         }
-        for(String d : duplicates){
-            System.out.println(d);
-        }
+//        for(String d : duplicates){
+//            System.out.println(d);
+//        }
     }
 }
