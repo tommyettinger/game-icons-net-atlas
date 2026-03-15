@@ -16,6 +16,10 @@ import com.badlogic.gdx.Gdx;
  * {@code FOR /R %i IN (*.png) DO magick mogrify -resize 60x60 %i} (from inside assembler/assets/)
  * Then...
  * {@code oxipng -o 6 -s --ng *.png} (from inside docs/flat/)
+ * <br>
+ * To change the 5125x512 transparent and white PNGs to monochrome for SDF handling, use:
+ * {@code FOR /R %i IN (*.png) DO magick mogrify -alpha extract -resize 240x240 -monochrome +dither %i} (from inside assembler/assets/big-mono/)
+ *
  */
 public class Main extends ApplicationAdapter {
     @Override

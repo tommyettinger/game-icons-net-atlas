@@ -7,7 +7,6 @@ import com.badlogic.gdx.backends.headless.HeadlessApplication;
 import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.GdxRuntimeException;
-import com.github.tommyettinger.Main;
 
 //import java.io.IOException;
 //import java.nio.file.Files;
@@ -19,8 +18,10 @@ import com.github.tommyettinger.Main;
 public class Renamer extends ApplicationAdapter {
     @Override
     public void create() {
-        FileHandle[] folders = Gdx.files.local("assets/").list();
-        FileHandle target = Gdx.files.local("../docs/flat/");
+        FileHandle[] folders = Gdx.files.local("assets/big-mono/").list();
+        FileHandle target = Gdx.files.local("../other_atlases/big-mono");
+//        FileHandle[] folders = Gdx.files.local("assets/").list();
+//        FileHandle target = Gdx.files.local("../docs/flat/");
         for(FileHandle folder : folders){
             FileHandle[] byAuthor = folder.list();
             for(FileHandle image : byAuthor){
