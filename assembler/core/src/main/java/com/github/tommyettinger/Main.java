@@ -18,8 +18,27 @@ import com.badlogic.gdx.Gdx;
  * {@code oxipng -o 6 -s --ng *.png} (from inside docs/flat/)
  * <br>
  * To change the 5125x512 transparent and white PNGs to monochrome for SDF handling, use:
- * {@code FOR /R %i IN (*.png) DO magick mogrify -alpha extract -resize 240x240 -monochrome +dither %i} (from inside assembler/assets/big-mono/)
- *
+ * {@code FOR /R %i IN (*.png) DO magick mogrify -alpha extract -resize 200x200 -monochrome +dither %i} (from inside assembler/assets/big-mono/)
+ * <br>
+ * Run Renamer.main() using the IDEA green arrow.
+ * <br>
+ * Then pack the atlas using the command-line texture packer; a pack.json file exists in other_atlases:
+ * {@code java -cp runnable-texturepacker.jar com.badlogic.gdx.tools.texturepacker.TexturePacker big-mono sdf Game-Icons-sdf} (from other_atlases/)
+ * <br>
+ * Then you can run the SDF converter on its gigantic output page:
+ * {@code java -cp extensions\gdx-tools\build\libs\gdx-tools-1.14.1-SNAPSHOT.jar com.badlogic.gdx.tools.distancefield.DistanceFieldGenerator --downscale 4 --spread 12 Game-Icons-mono.png Game-Icons-sdf.png} (from libgdx repo; copy gigantic output page here first)
+ * <br>
+ * Copy Game-Icons-sdf.png back into other_atlases/sdf/, then open lein repl and paste in the contents of resize.clj .
+ * There may be a way to do this more simply?
+ * Then you need to edit the header of other_atlases/sdf/Game-Icons-sdf.atlas , which was just generated.
+ * Change the lines before any entries, like before {@code 3d-glasses}, to:
+ * <code>
+ * Game-Icons-sdf.png
+ * size:4096,4096
+ * filter:Linear,Linear
+ * repeat:none
+ * </code>
+ * Then TransparencyProcessor and oxipng the PNG file, and oxipng the file in mono if you keep it.
  */
 public class Main extends ApplicationAdapter {
     @Override
